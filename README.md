@@ -14,6 +14,11 @@ Each endpoint uses the same JSON to specify the input and output:
 
 ## Base64
 
-To convert a string to base64 just ``POST`` it (as "input" inside the common JSON object) to ``/base64/encode``.
+To convert a string to [Base64](https://en.wikipedia.org/wiki/Base64), just ``POST`` it (as "input" inside the common JSON object) to ``/base64/encode``.
 
-To convert a string in base64 back to normal just ``POST`` it (as "input" inside the common JSON object) to ``/base64/decode``.
+To convert a string in [Base64](https://en.wikipedia.org/wiki/Base64) back to normal, just ``POST`` it (as "input" inside the common JSON object) to ``/base64/decode``.
+
+
+## ROT13
+
+To encode or decode a string with [ROT13](https://en.wikipedia.org/wiki/ROT13) just ``POST`` it (as "input" inside the common JSON object) to ``/rot13``.
