@@ -22,3 +22,7 @@ To convert a string in [Base64](https://en.wikipedia.org/wiki/Base64) back to no
 ## ROT13
 
 To encode or decode a string with [ROT13](https://en.wikipedia.org/wiki/ROT13) just ``POST`` it (as "input" inside the common JSON object) to ``/rot13``.
+
+
+# Addendum
+This repository is for learning purposes only. The algorithms are not tested, have minimal to none error checking and generally are not suitable for production. Use at your own risk!
