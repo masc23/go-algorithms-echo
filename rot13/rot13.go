@@ -7,7 +7,7 @@ import (
 	"github.com/masc23/go-algorithms-echo/core"
 )
 
-func rot13(c echo.Context) error {
+func rot13Handler(c echo.Context) error {
 	requestResponseObject := new(core.RequestResponseObject)
 
 	if err := c.Bind(requestResponseObject); err != nil {
@@ -20,5 +20,5 @@ func rot13(c echo.Context) error {
 }
 
 func init() {
-	core.EchoInstance.POST("/rot13", rot13)
+	core.EchoInstance.POST("/rot13", rot13Handler)
 }

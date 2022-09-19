@@ -7,31 +7,27 @@ import (
 	"github.com/masc23/go-algorithms-echo/core"
 )
 
-func encode(c echo.Context) error {
+func base64Handler(c echo.Context) error {
 	requestResponseObject := new(core.RequestResponseObject)
 
 	if err := c.Bind(requestResponseObject); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	requestResponseObject.Output = encodeString(requestResponseObject.Input)
+	switch action := c.Param("action"); action {
+	case "decode":
+		requestResponseObject.Output = decodeString(requestResponseObject.Input)
 
-	return c.JSON(http.StatusOK, requestResponseObject)
-}
+	case "encode":
+		requestResponseObject.Output = encodeString(requestResponseObject.Input)
 
-func decode(c echo.Context) error {
-	requestResponseObject := new(core.RequestResponseObject)
-
-	if err := c.Bind(requestResponseObject); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	default:
+		return echo.NewHTTPError(http.StatusNotFound, "action not found")
 	}
-
-	requestResponseObject.Output = decodeString(requestResponseObject.Input)
 
 	return c.JSON(http.StatusOK, requestResponseObject)
 }
 
 func init() {
-	core.EchoInstance.POST("/base64/encode", encode)
-	core.EchoInstance.POST("/base64/decode", decode)
+	core.EchoInstance.POST("/base64/:action", base64Handler)
 }
