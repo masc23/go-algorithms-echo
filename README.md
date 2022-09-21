@@ -21,7 +21,20 @@ To convert a string in [Base64](https://en.wikipedia.org/wiki/Base64) back to no
 
 ## ROT13
 
-To encode or decode a string with [ROT13](https://en.wikipedia.org/wiki/ROT13) just ``POST`` it (as "input" inside the common JSON object) to ``/rot13``.
+To encode or decode a string with [ROT13](https://en.wikipedia.org/wiki/ROT13), just ``POST`` it (as "input" inside the common JSON object) to ``/rot13``.
+
+
+## Equations & Regula Falsi
+
+To evaluate a given equation for a given ``x``, just ``POST`` the equation (as "input" inside the common JSON object) to ``/math/evaluate-equation``.
+
+The format for the equation is e.g. ``cos(x) - x`` for the equation _f(y) = cos(x) - x_.
+
+To find a zero for a given equation inside a given interval using [regula falsi](https://en.wikipedia.org/wiki/Regula_falsi), just ``POST`` to ``/math/regula-falsi``.
+
+The format for the input string is: ``[<lowerBound>;<upperBound>] <epsilon> <numberOfIterations> <equation>``. ``<lowerBound>``, ``<upperBound>`` and ``<epsilon>`` are floating point numbers, ``<numberOfIterations>`` is an positive integer ``> 0`` and the ``<equation>`` has the already established format.
+
+So for evaluating the equation _f(y) = cos(x) - x_ inside the interval ``[0;1]`` with an epsilon of ``0.000000000000001`` and ``100`` iterations, use: ``[0;1] 0.000000000000001 100 cos(x) - x``.
 
 
 # Addendum
